@@ -23,8 +23,9 @@ body, a:link, a:visited, a:active{
 /*  float: left;*/
 }
 .topbar{
-  height: 100px;
+  height: 60px;
   background-color: #555;
+  /*opacity: 0.5;*/
 }
 .title{
   background-color: #777;
