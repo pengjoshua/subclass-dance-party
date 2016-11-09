@@ -48,7 +48,7 @@ body, a:link, a:visited, a:active{
 }
 .rectDancer:hover {
   -webkit-transform-origin: 100 100;
-  -webkit-transform:rotate(360deg);
+  -webkit-transform: rotate(360deg);
 }
 .rectDancer {
   transition: .3s;

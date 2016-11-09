@@ -1,5 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
+  var removeCount = 0;
 
   $('.addBlinkyDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -28,7 +29,6 @@ $(document).ready(function() {
     );
 
     window.dancers.push(blinky);
-    // console.log(window.dancers.length)
     $('body').append(blinky.$node);
   });
 
@@ -42,7 +42,6 @@ $(document).ready(function() {
     );
 
     window.dancers.push(colorful);
-    // console.log(window.dancers.length)
     $('body').append(colorful.$node);
   });
 
@@ -56,7 +55,6 @@ $(document).ready(function() {
     );
 
     window.dancers.push(shrinky);
-    // console.log(window.dancers.length)
     $('body').append(shrinky.$node);
   });
 
@@ -70,7 +68,6 @@ $(document).ready(function() {
     );
 
     window.dancers.push(moving);
-    // console.log(window.dancers.length)
     $('body').append(moving.$node);
   });
 
@@ -94,11 +91,14 @@ $(document).ready(function() {
     }
   });
 
-  // $('.dancer').on('click', function(event) {
-  //   $(this).stop(true, true).hide('explode', { pieces: 128 }, 1000);
-  //   $(this).addClass('queueDelete');
-  //   $(this).remove();
-  // });
+  // remove the character
+  $('body').on('click', '.dancer', function(event) {
+    $(this).stop(true, true).hide('explode', { pieces: 16 }, 1000);
+    $(this).remove();
+    // console.log(window.dancers.length)
+    // $(this).addClass('hidden');
+    removeCount++;
+  });
 
   var search = function(val) {
     var imgs = [];
@@ -137,15 +137,14 @@ $(document).ready(function() {
     $('body').append(gifDancer.$node);
   };
 
-  // $('.alignDancersButton').on('click', function(event) {
-  //   console.log('align');
-    
-  //   _.each(window.dancers, function(dancer) {
-  //     console.log(dancer);
-  //     dancer.$node.animate({width: '100px'});
-  //     dancer.$node.animate({width: '500px'});
-  //   });
-  // });
+  $('.lineUpDancersButton').on('click', function(event) {
+    console.log('lineUp');
+    var left = 0;
+    _.each(window.dancers, function(dancer) {
+      dancer.setPosition($('body').height() / 2, left);
+      left += $('body').width() / window.dancers.length;
+    });
+  });
 
 });
 

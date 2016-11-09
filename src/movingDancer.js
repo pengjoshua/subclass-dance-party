@@ -2,7 +2,7 @@ var makeMovingDancer = function(top, left, timeBetweenSteps) {
   makeDancer.apply(this, arguments);
   this.timeBetweenSteps += Math.random() * 1000;
   this.$node.css({
-    'transition': 'top' + this.timeBetweenSteps / 1000 + 's, left ' + this.timeBetweenSteps / 1000 + 's'});
+    'transition': 'top ' + this.timeBetweenSteps / 1000 + 's, left ' + this.timeBetweenSteps / 1000 + 's'});
   this.moved = false;
 };
 
@@ -19,7 +19,7 @@ makeMovingDancer.prototype.step = function() {
     var randomLeft = $('body').width() * Math.random();
     this.top = randomTop;
     this.left = randomLeft;
-    this.setPosition(randomTop, randomLeft);
+    this.setPosition(this.top, this.left);
     this.moved = true;
   }
 };
